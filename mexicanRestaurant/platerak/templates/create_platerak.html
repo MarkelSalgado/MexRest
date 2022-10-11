@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="container create_dish_contain">
+    <div class="row">
+        <div class="col">
+            <h3 class="name_list_dish">Daukagun platerak</h3>
+            <div class="div_list_dish">
+                {% for plater in platerak %}
+                <p>{{ plater.izena }}</p>
+                {% endfor %}
+            </div>
+
+        </div>
+        <div class="col-3 add_dish_div">
+            <form action="addrecord/" method="post">
+                {% csrf_token %}
+                Plateraren izena<br>
+                <input name="plt_izena">
+                <br><br>
+                Plateraren deskripzioa<br>
+                <input name="plt_deskripzioa">
+                <br><br>
+                Plateraren osagaiak<br>
+                <input name="plt_osagaiak">
+                <br><br>
+                Plateraren prezioa (€)<br>
+                <input name="plt_prezioa">
+                <br><br>
+                <input type="submit" value="Gehitu platera">
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}

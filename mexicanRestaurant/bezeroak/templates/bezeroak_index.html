@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <!-- CSS only -->
+    <link rel="stylesheet" href="{% static 'style.css'%}"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Mexican Restaurant</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand navbar_style" href="index">Mexican Restaurant</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="menu">Our menu</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link">|</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="add_platera">Create platera</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link">|</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Bezeroak jan dezaketen platerak prezioaren arabera</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link">|</a>
+            </li>
+        </ul>
+        <div class="navbar_search">
+            <form class="row form-inline my-2 my-lg-0">
+                <div class="col-6">
+                    <input class="form-control mr-sm-2 search_input_style" type="search" placeholder="Search"
+                           aria-label="Search">
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-outline-success my-2 my-sm-0 search_button_style" type="submit">Search
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="container menu_style" style="margin-left: 20%">
+    <div class="title_div_style"><h1 class="title_style">BEZEROAK</h1></div>
+    <br><br>
+    <div class="row" style="margin-left: 10%">
+        {% for bezero in bezeroak %}
+        <div class="col-4 menu_div_style">
+            <br>
+            <p><b>{{ bezero.izena }}</b></p>
+            <p>DNI: <b>{{ bezero.dni }} </b></p>
+            <p>Telefonoa: <b> {{ bezero.kontaktuko_telefono_zenbakia }} </b></p>
+            <p>Saldo: <b> {{ bezero.saldo }} €</b></p></div>
+        <div class="col-3 menu_div_style">
+            <br>
+            {% for plater in platerak %}
+            {% if bezero.saldo >= plater.prezioa %}
+            <p>{{ plater.izena }} Balioa: {{ plater.prezioa }} €</p>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+</body>
+</html>

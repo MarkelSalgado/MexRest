@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="container menu_style" style="margin-left: 20%">
+    <div class="title_div_style"><h1 class="title_style">MENU</h1></div>
+    <br><br>
+    <div class="row">
+        {% for plater in platerak %}
+        <div class="col-3 menu_div_style">
+            <div class="row menu_style1">
+                <div class="col">
+                    <div class="row">
+                        <div class="col-3">
+                           <a href="update/{{ plater.id }}">
+                               <img class="icono_edit" src="{% static 'img/edit.png' %}">
+                           </a>
+
+                        </div>
+                        <div class="col-3">
+                            <a href="delete/{{ plater.id }}">
+                                <img class="icono_basura" src="{% static 'img/basura.png' %}">
+                            </a>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <p><b>{{ plater.izena }}</b></p>
+            <p>{{ plater.osagaia }}</p>
+            <p>{{ plater.prezioa }} €</p>
+            <button id="deskripzioa_btn">
+                Deskripzioa ikusi
+            </button>
+            <div style="display: none" class="description_hidden">
+                <h1 id="parrafoa">{{ plater.deskripzioa }}</h1>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-3 menu_div_style">
+                <h1></h1>
+                <img class="img_style" src=" {% static 'img/tlayuda.jpg' %}">
+            </div>
+            <div class="col-3 menu_div_style">
+                <img class="img_style" src=" {% static 'img/totopos.jpg' %}">
+            </div>
+            <div class="col-3 menu_div_style">
+                <img class="img_style" src=" {% static 'img/mole.jpg' %}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 menu_div_style">
+                <img class="img_style" src=" {% static 'img/cochinita_pibil.jpg' %}">
+            </div>
+            <div class="col-3 menu_div_style">
+                <img class="img_style" src=" {% static 'img/cabrito.jpg' %}">
+            </div>
+            <div class="col-3 menu_div_style">
+                <img class="img_style" src=" {% static 'img/chapulines_escamoles.jpg' %}">
+            </div>
+        </div>
+         <div class="row">
+            <div class="col-3 menu_div_style">
+                <img class="img_style" src=" {% static 'img/baja_california.jpg' %}">
+            </div>
+            <div class="col-3 menu_div_style">
+                <img class="img_style" src=" {% static 'img/baja_california_sur.jpg' %}">
+            </div>
+            <div class="col-3 menu_div_style">
+                <img class="img_style" src=" {% static 'img/campeche.jpg' %}">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+
